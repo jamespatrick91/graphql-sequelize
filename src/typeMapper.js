@@ -110,7 +110,14 @@ export function toGraphQL(sequelizeType, sequelizeTypes) {
     });
   }
 
-  if (sequelizeType instanceof VIRTUAL) {
+  if (
+	  sequelizeType instanceof VIRTUAL ||
+	  (
+		  typeof sequelizeType == 'object' &&
+		  sequelizeType.hasOwnProperty('sqlType') &&
+		  sequelizeType.sqlType == 'GEOMETRY'
+	  )
+	) {
     let returnType = sequelizeType.returnType
         ? toGraphQL(sequelizeType.returnType, sequelizeTypes)
         : GraphQLString;
