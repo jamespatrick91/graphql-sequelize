@@ -37,6 +37,6 @@ docker-compose.yml
 pre-commit
 
 # Examples / Docs
-exampels
+examples
 README.md
 docs
